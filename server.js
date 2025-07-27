@@ -40,7 +40,7 @@ app.route('/')
 
   app.route('/json')
     .get(function(req, res) {
-		  res.json({message: "Hello World"});
+		  res.json({message: "Hello json"});
     })
 
 // Respond not found to all the wrong routes
