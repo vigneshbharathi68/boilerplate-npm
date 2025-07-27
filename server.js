@@ -8,6 +8,7 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+require('dotenv').config()
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -40,7 +41,12 @@ app.route('/')
 
   app.route('/json')
     .get(function(req, res) {
-		  res.json({message: "Hello json"});
+      let message = 'Hello json'
+      if (process.env.MESSAGE_STYLE === 'uppercase')  {
+        message = message.toUpperCase()
+      }
+      
+		  res.json({message});
     })
 
 // Respond not found to all the wrong routes
